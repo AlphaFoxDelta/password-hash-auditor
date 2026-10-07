@@ -1,0 +1,4 @@
+# password-hash-auditor uses only the Python standard library.
+# No third-party packages are required.
+#
+# Requires Python 3.8 or newer.
