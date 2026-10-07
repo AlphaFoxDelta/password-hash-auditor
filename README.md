@@ -1,8 +1,8 @@
 # password-hash-auditor
 
 A dictionary-attack auditor for SHA-256 password hashes. Feed it a hash
-list, it tries the mutations real attackers try first, and it tells you —
-usually in under a second — which passwords were a bad idea. Standard
+list, it tries the mutations real attackers try first, and it tells you,
+usually in under a second, which passwords were a bad idea. Standard
 library only.
 
 ## Why I built this
@@ -13,7 +13,7 @@ your argument for MFA and a real password policy. Nobody argues with a
 live crack.
 
 It's also the flip side of my offensive projects. Same technique
-(dictionary attack), opposite intent — auditing your own hashes instead of
+(dictionary attack), opposite intent: auditing your own hashes instead of
 someone else's.
 
 ## What it does
@@ -29,7 +29,7 @@ someone else's.
 
 ## Quick start
 
-No dependencies — Python 3.8+ is all you need.
+No dependencies. Python 3.8+ is all you need.
 
 ```bash
 # 1. generate the demo hashes (5 weak + 1 strong)
@@ -115,7 +115,7 @@ Benchmark: 24,084 guesses in 0.02 s -> 1,510,696 guesses/sec
 ## What tripped me up
 
 Deduplication. My first version generated the same candidate a dozen
-different ways — case variants overlapping with leet variants and so on —
+different ways (case variants overlapping with leet variants and so on),
 and the guess count was inflated with repeats. The audit still "worked,"
 it was just doing a bunch of wasted hashes. A `seen` set fixed it, but it
 took me a while to notice. The benchmark numbers looking oddly low is what
@@ -127,7 +127,7 @@ felt like overkill until I remembered how many passwords end in a year.
 ## What I'd do differently
 
 - This targets fast unsalted SHA-256, which is the easy case. Real
-  systems should be on bcrypt, scrypt, or Argon2 — memory-hard hashes
+  systems should be on bcrypt, scrypt, or Argon2: memory-hard hashes
   that make this kind of volume impractical. That's kind of the point of
   the demo, but supporting those hashes would make the tool honest about
   modern password storage.
@@ -140,5 +140,5 @@ felt like overkill until I remembered how many passwords end in a year.
 
 Only audit hashes you own or are explicitly authorized to test. Running
 this against someone else's credentials is unauthorized access in most
-places. This exists to help defenders — strengthen policy, justify MFA,
+places. This exists to help defenders: strengthen policy, justify MFA,
 educate users.
